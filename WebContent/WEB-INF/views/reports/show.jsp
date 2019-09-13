@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <c:import url="/WEB-INF/views/layout/app.jsp">
     <c:param name="content">
         <c:choose>
@@ -37,6 +38,19 @@
                         </tr>
                     </tbody>
                 </table>
+
+<c:choose>
+    <c:when test="${employee_iine > 0}">
+
+   <button type="button" class="button1">いいね! <c:out value="${iine_count}" /></button>
+    <a  href="<c:url value='/IineDelete?report_id=${report.id}&employee_id=${sessionScope.login_employee.id}' />"><button type="button" class="button2">いいね! を取り消す</button></a>
+    </c:when>
+    <c:otherwise>
+      <a href="<c:url value='/IineCreate?report_id=${report.id}&employee_id=${sessionScope.login_employee.id}' />">
+      <button type="button" class="button1">いいね! <c:out value="${iine_count}" /></button></a>
+
+    </c:otherwise>
+</c:choose>
 
                 <c:if test="${sessionScope.login_employee.id == report.employee.id}">
                     <p><a href="<c:url value='/reports/edit?id=${report.id}' />">この日報を編集する</a></p>

@@ -33,6 +33,8 @@ import javax.persistence.Table;
             name = "getMyReportsCount",
             query = "SELECT COUNT(r) FROM Report AS r WHERE r.employee = :employee"
             )
+
+
 })
 @Entity
 public class Report {
@@ -60,6 +62,8 @@ public class Report {
 
     @Column(name = "updated_at", nullable = false)
     private Timestamp updated_at;
+
+
 
     public Integer getId() {
         return id;
@@ -116,4 +120,6 @@ public class Report {
     public void setUpdated_at(Timestamp updated_at) {
         this.updated_at = updated_at;
     }
+
+
 }
